@@ -20,6 +20,8 @@ import 'dart:math';
 class InfiniteProcessPageStarter extends StatelessWidget {
   @override
   Widget build(context) {
+    ///TODO ----
+    ///ChangeNotifierProvider:是Provider的一种
     return ChangeNotifierProvider(
       builder: (context) => InfiniteProcessIsolateController(),
       child: InfiniteProcessPage(),
@@ -88,9 +90,14 @@ class InfiniteProcessIsolateController extends ChangeNotifier {
 
   Future<void> createIsolate() async {
     mIceRP = ReceivePort();
+    ///生成isolate的方法
+    ///必传递参数：entryPoint和message
+    ///必须是顶级函数
+    ///耗时的操作放在isolate里
     newIsolate = await Isolate.spawn(_secondIsolateEntryPoint, mIceRP.sendPort);
   }
 
+  ///监听
   void listen() {
     mIceRP.listen((dynamic message) {
       if (message is SendPort) {
@@ -102,15 +109,18 @@ class InfiniteProcessIsolateController extends ChangeNotifier {
     });
   }
 
+  ///开始
   Future<void> start() async {
     if (_running == false && _paused == false) {
       await createIsolate();
       listen();
       _running = true;
+      ///通知
       notifyListeners();
     }
   }
 
+  ///停止
   void terminate() {
     newIsolate.kill();
     _running = false;
@@ -124,6 +134,7 @@ class InfiniteProcessIsolateController extends ChangeNotifier {
     notifyListeners();
   }
 
+  ///设置乘数
   void setMultiplier(int newMultiplier) {
     _currentMultiplier = newMultiplier;
     newIceSP.send(_currentMultiplier);
@@ -187,17 +198,21 @@ class RunningList extends StatelessWidget {
   }
 }
 
+///顶级函数
 Future<void> _secondIsolateEntryPoint(SendPort callerSP) async {
   int multiplyValue = 1;
 
   ReceivePort newIceRP = ReceivePort();
+  ///发送
   callerSP.send(newIceRP.sendPort);
 
+  ///监听
   newIceRP.listen((dynamic message) {
     if (message is int) multiplyValue = message;
   });
 
   int forEnd = 10000;
+  ///一直循环
   while (true) {
     int sum = 0;
 
@@ -210,6 +225,7 @@ Future<void> _secondIsolateEntryPoint(SendPort callerSP) async {
   }
 }
 
+///计算
 Future<int> brokenUpComputation(int num) {
   Random rng = Random();
 
@@ -217,6 +233,7 @@ Future<int> brokenUpComputation(int num) {
     int sum = 0;
 
     for (int i = 0; i < num; i++) {
+      ///随机数
       sum += rng.nextInt(100);
     }
     return sum;
@@ -224,6 +241,7 @@ Future<int> brokenUpComputation(int num) {
 }
 
 Widget newButtons(BuildContext context) {
+  ///
   final controller =
       Provider.of<InfiniteProcessIsolateController>(context, listen: false);
 

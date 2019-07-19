@@ -41,6 +41,7 @@ class _PerformancePageState extends State<PerformancePage> {
                     return RaisedButton(
                       child: const Text('Compute on Main'),
                       elevation: 8.0,
+                      ///会卡动画
                       onPressed: createMainIsolateCallBack(context, snapshot),
                     );
                   },
@@ -103,15 +104,21 @@ class _PerformancePageState extends State<PerformancePage> {
   }
 }
 
+///延时
 Future<void> computeOnMainIsolate() async {
+  ///毫秒
   // The isolate will need a little time to disable the buttons before the performance hit.
   await Future.delayed(Duration(milliseconds: 100), () => fib(45));
 }
 
 Future<void> computeOnSecondaryIsolate() async {
+  ///一个函数：必须是顶级函数或静态函数
+  ///一个参数：函数定义的参数
+  ///调用compute函数，compute函数的参数就是想要在isolate里运行的函数，和这个函数需要的参数
   await compute(fib, 45);
 }
 
+///递归调用 耗时
 int fib(int n) {
   int number1 = n - 1;
   int number2 = n - 2;
@@ -151,6 +158,7 @@ class SmoothAnimationWidgetState extends State<SmoothAnimationWidget>
             },
           );
 
+    ///圆角动画
     borderRadius = BorderRadiusTween(
       begin: BorderRadius.circular(100.0),
       end: BorderRadius.circular(0.0),
