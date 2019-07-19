@@ -33,6 +33,7 @@ class FavoritesScreen extends StatelessWidget {
                 : ListView(
                     children: [
                       SizedBox(height: 24),
+                      ///
                       for (Veggie veggie in model.favoriteVeggies)
                         Padding(
                           padding: EdgeInsets.fromLTRB(16, 0, 16, 24),

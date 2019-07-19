@@ -23,6 +23,7 @@ class FrostyBackground extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRect(
+      ///模糊处理
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaX: intensity, sigmaY: intensity),
         child: DecoratedBox(
@@ -82,12 +83,14 @@ class _PressableCardState extends State<PressableCard> {
     return GestureDetector(
       onTap: () {
         setState(() => cardIsDown = false);
+        ///
         if (widget.onPressed != null) {
           widget.onPressed();
         }
       },
       onTapDown: (details) => setState(() => cardIsDown = true),
       onTapCancel: () => setState(() => cardIsDown = false),
+      ///动画
       child: AnimatedPhysicalModel(
         elevation: cardIsDown ? widget.downElevation : widget.upElevation,
         borderRadius: widget.borderRadius,
@@ -112,6 +115,7 @@ class VeggieCard extends StatelessWidget {
 
   /// If the veggie is in season, it's displayed more prominently and the
   /// image is fully saturated. Otherwise, it's reduced and de-saturated.
+  /// 当季
   final bool isInSeason;
 
   /// Whether [veggie] falls into one of user's preferred [VeggieCategory]s
@@ -145,6 +149,7 @@ class VeggieCard extends StatelessWidget {
       onPressed: () {
         Navigator.of(context).push<void>(CupertinoPageRoute(
           builder: (context) => DetailsScreen(veggie.id),
+          ///全屏
           fullscreenDialog: true,
         ));
       },
@@ -157,6 +162,7 @@ class VeggieCard extends StatelessWidget {
               decoration: BoxDecoration(
                 image: DecorationImage(
                   fit: BoxFit.cover,
+                  ///TODO ----
                   colorFilter:
                       isInSeason ? null : Styles.desaturatedColorFilter,
                   image: AssetImage(

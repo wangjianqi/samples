@@ -43,6 +43,7 @@ class SearchBar extends StatelessWidget {
                 cursorColor: Styles.searchCursorColor,
               ),
             ),
+            ///清除
             GestureDetector(
               onTap: () {
                 controller.clear();

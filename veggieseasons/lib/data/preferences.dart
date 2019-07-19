@@ -20,6 +20,7 @@ class Preferences extends Model {
 
   int _desiredCalories = 2000;
 
+  ///集合
   Set<VeggieCategory> _preferredCategories = Set<VeggieCategory>();
 
   Future<int> get desiredCalories async {
@@ -50,6 +51,7 @@ class Preferences extends Model {
     notifyListeners();
   }
 
+  ///加载数据
   void load() {
     _loading = _loadFromSharedPrefs();
   }
@@ -78,7 +80,7 @@ class Preferences extends Model {
         }
       }
     }
-
+    ///通知
     notifyListeners();
   }
 }

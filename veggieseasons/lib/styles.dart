@@ -16,6 +16,7 @@ abstract class Styles {
     fontWeight: FontWeight.bold,
   );
 
+  ///Style
   static const minorText = TextStyle(
     color: Color.fromRGBO(128, 128, 128, 1),
     fontFamily: 'NotoSans',
@@ -160,6 +161,7 @@ abstract class Styles {
     fontWeight: FontWeight.normal,
   );
 
+  ///背景色
   static const appBackground = Color(0xffd0d0d0);
 
   static const scaffoldBackground = Color(0xfff0f0f0);

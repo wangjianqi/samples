@@ -186,6 +186,7 @@ class SettingsScreen extends StatelessWidget {
         child: CustomScrollView(
           slivers: <Widget>[
             CupertinoSliverNavigationBar(
+              ///largeTitle
               largeTitle: Text('Settings'),
             ),
             SliverSafeArea(

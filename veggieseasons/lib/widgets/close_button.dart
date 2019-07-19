@@ -19,6 +19,7 @@ class FrostedBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ///模糊
     return BackdropFilter(
       filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
       child: DecoratedBox(
@@ -70,6 +71,7 @@ class _ColorChangingIconState
 
   @override
   void forEachTween(TweenVisitor<dynamic> visitor) {
+    ///动画
     _colorTween = visitor(
       _colorTween,
       widget.color,
@@ -79,6 +81,7 @@ class _ColorChangingIconState
 }
 
 /// A simple "close this modal" button that invokes a callback when pressed.
+/// 关闭按钮
 class CloseButton extends StatefulWidget {
   const CloseButton(this.onPressed);
 

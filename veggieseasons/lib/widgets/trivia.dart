@@ -84,6 +84,7 @@ class _TriviaViewState extends State<TriviaView> {
     }
   }
 
+  ///重新开始
   void _resetGame() {
     setState(() {
       triviaIndex = 0;
@@ -92,6 +93,7 @@ class _TriviaViewState extends State<TriviaView> {
     });
   }
 
+  ///继续
   void _processAnswer(int answerIndex) {
     setState(() {
       if (answerIndex == currentTrivia.correctAnswerIndex) {
@@ -105,6 +107,7 @@ class _TriviaViewState extends State<TriviaView> {
 
   // Widget shown when the game is over. It includes the score and a button to
   // restart everything.
+  ///结束
   Widget _buildFinishedView() {
     return Padding(
       padding: const EdgeInsets.all(32),
@@ -156,6 +159,7 @@ class _TriviaViewState extends State<TriviaView> {
   }
 
   // Presents the current trivia's question and answer choices.
+  ///问题
   Widget _buildQuestionView() {
     return Padding(
       padding: const EdgeInsets.all(16),
@@ -183,6 +187,7 @@ class _TriviaViewState extends State<TriviaView> {
 
   // Shows whether the last answer was right or wrong and prompts the user to
   // continue through the game.
+  ///结果
   Widget _buildResultView() {
     return Padding(
       padding: const EdgeInsets.all(32),

@@ -15,6 +15,7 @@ import 'package:veggieseasons/styles.dart';
 
 typedef SettingsItemCallback = FutureOr<void> Function();
 
+///更多
 class SettingsNavigationIndicator extends StatelessWidget {
   const SettingsNavigationIndicator({Key key}) : super(key: key);
 

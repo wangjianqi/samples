@@ -27,6 +27,7 @@ class ZoomClipAssetImage extends StatelessWidget {
       alignment: Alignment.center,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(10),
+        ///TODO ----
         child: OverflowBox(
           maxHeight: height * zoom,
           maxWidth: width * zoom,
@@ -82,6 +83,7 @@ class VeggieHeadline extends StatelessWidget {
             width: 72,
           ),
           SizedBox(width: 8),
+          ///占满
           Flexible(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -90,6 +92,7 @@ class VeggieHeadline extends StatelessWidget {
                 Row(
                   children: [
                     Text(veggie.name, style: Styles.headlineName),
+                    ///添加
                     ..._buildSeasonDots(veggie.seasons),
                   ],
                 ),

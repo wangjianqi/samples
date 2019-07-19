@@ -63,8 +63,10 @@ class ServingInfoChart extends StatelessWidget {
           padding: const EdgeInsets.all(8),
           child: Column(
             children: [
+              ///TODO ----Table
               Table(
                 children: [
+                  ///行
                   TableRow(
                     children: [
                       TableCell(
@@ -185,6 +187,7 @@ class InfoView extends StatelessWidget {
                 },
               ),
               Spacer(),
+              ///添加
               for (Season season in veggie.seasons) ...[
                 SizedBox(width: 12),
                 Padding(
@@ -208,6 +211,7 @@ class InfoView extends StatelessWidget {
             veggie.shortDescription,
             style: Styles.detailsDescriptionText,
           ),
+          ///表格
           ServingInfoChart(veggie, prefs),
           SizedBox(height: 24),
           Row(

@@ -21,6 +21,7 @@ void main() {
       model: AppState(),
       child: ScopedModel<Preferences>(
         model: Preferences()..load(),
+        ///App
         child: CupertinoApp(
           debugShowCheckedModeBanner: false,
           color: Styles.appBackground,

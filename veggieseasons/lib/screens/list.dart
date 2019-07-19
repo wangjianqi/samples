@@ -30,6 +30,7 @@ class ListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return CupertinoTabView(
       builder: (context) {
+        ///日期
         String dateString = DateFormat("MMMM y").format(DateTime.now());
 
         final appState =
@@ -40,6 +41,7 @@ class ListScreen extends StatelessWidget {
         return DecoratedBox(
           decoration: BoxDecoration(color: Color(0xffffffff)),
           child: ListView.builder(
+            ///+2
             itemCount: appState.allVeggies.length + 2,
             itemBuilder: (context, index) {
               if (index == 0) {

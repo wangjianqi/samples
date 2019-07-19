@@ -12,6 +12,7 @@ import 'package:veggieseasons/screens/settings.dart';
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    ///脚手架
     return CupertinoTabScaffold(
       tabBar: CupertinoTabBar(items: [
         BottomNavigationBarItem(

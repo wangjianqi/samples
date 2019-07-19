@@ -72,7 +72,9 @@ class SettingsGroup extends StatelessWidget {
         assert(items.isNotEmpty);
 
   final List<SettingsItem> items;
+  ///header
   final Widget header;
+  ///footer
   final Widget footer;
 
   @override
